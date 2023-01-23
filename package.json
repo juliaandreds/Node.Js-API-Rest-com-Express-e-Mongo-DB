@@ -1,0 +1,21 @@
+{
+  "name": "node.js-api-rest-com-express-e-mongo-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliaandreds/Node.Js-API-Rest-com-Express-e-Mongo-DB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliaandreds/Node.Js-API-Rest-com-Express-e-Mongo-DB/issues"
+  },
+  "homepage": "https://github.com/juliaandreds/Node.Js-API-Rest-com-Express-e-Mongo-DB#readme"
+}
