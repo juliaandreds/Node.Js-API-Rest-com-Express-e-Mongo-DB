@@ -1,6 +1,7 @@
 import express from "express";
 import db from "./config/dbconect.js";
 import livros from "./models/Livro.js";
+import routes from "./routes/index.js";
 
 db.on ("error", console.log.bind (console, 'Erro de conexão'));
 db.once("open", () => {
@@ -12,22 +13,18 @@ const app = express();
 //o que chega tanto do postman como daqui
 app.use(express.json());
 
-/* const livros = [
-    {id: 1, "título": "Senhor dos anéis"},
-    {id: 2, "título": "O Hobbit"}
-
-] */
+routes(app);
 
 
-app.get ('/', (req,res) => {
-    res.status(200).send('Curso de Node');
-})
 
-app.get ('/livros', (req,res) => {
+
+
+
+/* app.get ('/livros', (req,res) => {
     livros.find ((err, livros) => {
         res.status(200).json(livros);
     })
-})
+}) */
 
 
 app.get ('/livros/:id', (req,res) => {
