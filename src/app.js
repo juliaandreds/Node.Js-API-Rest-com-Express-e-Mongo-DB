@@ -1,5 +1,6 @@
-import express, { json } from "express";
+import express from "express";
 import db from "./config/dbconect.js";
+import livros from "./models/Livro.js";
 
 db.on ("error", console.log.bind (console, 'Erro de conexão'));
 db.once("open", () => {
@@ -8,20 +9,26 @@ db.once("open", () => {
 
 const app = express();
 
-app.use (express.json());
+//o que chega tanto do postman como daqui
+app.use(express.json());
 
-const livros = [
-    {id: 1, titulo: "Senhos dos Anéis"},
-    {id: 2, título: "Hobbit"}
-]
+/* const livros = [
+    {id: 1, "título": "Senhor dos anéis"},
+    {id: 2, "título": "O Hobbit"}
+
+] */
+
 
 app.get ('/', (req,res) => {
-    res.status(200).send ('Curso de Node');
+    res.status(200).send('Curso de Node');
 })
 
 app.get ('/livros', (req,res) => {
-    res.status (200).json(livros);
+    livros.find ((err, livros) => {
+        res.status(200).json(livros);
+    })
 })
+
 
 app.get ('/livros/:id', (req,res) => {
     let index = buscaLivros (req.params.id);
@@ -34,11 +41,10 @@ app.post ('/livros', (req,res) => {
     res.status(201).send('livro cadastrado com sucesso')    
 })
 
-app.put ('/livros/:id', (req,res) => {
-    let index = buscaLivros (req.params.id);
+app.put('/livros/:id', (req, res) => {
+    let index = buscaLivros(req.params.id);
     livros[index].titulo = req.body.titulo;
-    res.json(livros)
-    
+    res.json(livros);
 })
 
 app.delete ('/livros/:id', (req,res) => {

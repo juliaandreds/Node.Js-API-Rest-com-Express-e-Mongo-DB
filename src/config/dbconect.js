@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb+srv://alura:wtS96UxMcw1s7zEV@alura.d8qoms7.mongodb.net/alura-node")
+mongoose.connect("mongodb+srv://alura:123@alura.d8qoms7.mongodb.net/alura-node")
 
 let db = mongoose.connection;
 
-export default db
+export default db;
